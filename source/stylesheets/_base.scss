@@ -2,4 +2,18 @@ body {
   font: 400 1em/1.4 $primary-font;
   margin: 0;
   text-rendering: optimizeLegibility;
+  overflow: hidden;
+  padding: 0;
+}
+
+video {
+  min-height: 100%;
+  min-width: 100%;
+  opacity: 0;
+  @include position(absolute, 0px 0px 0px 0px);
+  z-index: 1;
+
+  &.active {
+    opacity: 1;
+  }
 }
