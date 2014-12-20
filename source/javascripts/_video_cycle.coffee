@@ -1,7 +1,3 @@
-$(document).on 'click', (event) ->
-  show_random_video()
-  event.stopPropagation()
-
 show_random_video = ->
   video_count = $('video').length
   $active_video = $('video.active')
@@ -15,3 +11,5 @@ show_random_video = ->
 
 random_number_between = (min, max) ->
   Math.round(Math.random() * (max - min) + min)
+
+setInterval show_random_video, 5 * 1000
