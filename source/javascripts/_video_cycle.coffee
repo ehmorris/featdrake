@@ -12,4 +12,5 @@ show_random_video = ->
     $active_video.removeClass('active')
     $(".videos video:nth-of-type(#{random_video_index})").addClass('active')
 
-setInterval show_random_video, 5 * 1000
+$ ->
+  setInterval(show_random_video, 5 * 1000)

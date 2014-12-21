@@ -1,19 +1,19 @@
 body {
+  color: $main-type-color;
   font: 400 1em/1.4 $primary-font;
   margin: 0;
-  text-rendering: optimizeLegibility;
   overflow: hidden;
   padding: 0;
+  text-rendering: optimizeLegibility;
 }
 
 .about {
-  color: rgb(215, 215, 215);
   font-family: monospace;
   letter-spacing: 1px;
   @include position(absolute, 12vh 0 auto 0);
   text-align: center;
   text-transform: uppercase;
-  z-index: 2;
+  z-index: 3;
 
   h1, p { margin: 0 }
 
@@ -25,13 +25,34 @@ body {
   }
 
   p {
-    @include filter(blur(.035em));
+    @include filter(blur(.04em));
     font-size: 2.75vw;
     line-height: 1.5;
     text-shadow: -.15em 0 .1em #000, .05em 0 .05em #000;
   }
 
   a { color: inherit }
+}
+
+.controls {
+  font-size: 1.5vw;
+  margin-top: 1em;
+  @include user-select(none);
+
+  &.playing {
+    .playpause:after { content: 'pause' }
+  }
+
+  .control {
+    background: rgba($main-type-color, .5);
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    padding: 1em;
+  }
+
+  .playpause:after { content: 'play' }
+  .next:after { content: 'next' }
 }
 
 .videos video {
@@ -41,7 +62,7 @@ body {
   @include position(absolute, 0px 0px 0px 0px);
   z-index: 1;
 
-  &.active {
-    opacity: 1;
-  }
+  &.active { opacity: 1 }
 }
+
+.soundcloud { display: none }
