@@ -1,6 +1,11 @@
 toggle_play = (widget) ->
   widget.toggle()
+  set_current_song_title(widget)
   $('.controls').toggleClass('playing')
+
+set_current_song_title = (widget) ->
+  widget.getCurrentSound (sound) ->
+    $('.current_song').text(sound.title)
 
 next_song = (widget) ->
   playlist_length = 0
@@ -13,6 +18,7 @@ next_song = (widget) ->
       widget.next()
     else
       widget.skip(0)
+    set_current_song_title(widget)
 
 $ ->
   window.widget = SC.Widget($('.soundcloud').get(0))
