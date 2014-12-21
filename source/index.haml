@@ -1,4 +1,17 @@
-%video.active{ 'src' => 'assets/driving.mp4', 'autoplay' => 'true', 'loop' => 'true' }
-%video{ 'src' => 'assets/posing.mp4', 'autoplay' => 'true', 'loop' => 'true' }
-%video{ 'src' => 'assets/slalom.mp4', 'autoplay' => 'true', 'loop' => 'true' }
-%video{ 'src' => 'assets/braking.mp4', 'autoplay' => 'true', 'loop' => 'true' }
+.about
+  %section
+    %h1 Feat. Drake Records
+    %p
+      2014 Releases on Soundcloud:
+      = link_to 'soundcloud.com/featdrake/sets/2014-releases', 'https://soundcloud.com/featdrake/sets/2014-releases'
+
+.controls
+  .current_song
+  .play
+  .pause
+
+.videos
+  %video.active{ 'src' => 'assets/driving.mp4', 'autoplay' => 'true', 'loop' => 'true' }
+  %video{ 'src' => 'assets/posing.mp4', 'autoplay' => 'true', 'loop' => 'true' }
+  %video{ 'src' => 'assets/slalom.mp4', 'autoplay' => 'true', 'loop' => 'true' }
+  %video{ 'src' => 'assets/braking.mp4', 'autoplay' => 'true', 'loop' => 'true' }
