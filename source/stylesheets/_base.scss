@@ -21,14 +21,14 @@ body {
     @include filter(blur(.025em));
     font-size: 6vw;
     line-height: 1.15;
-    text-shadow: -.1em 0 .05em #000, .05em 0 .1em #000;
+    text-shadow: -.1em 0 .05em #000, .05em 0 .05em #000, 0 .04em 0 #000;
   }
 
   p {
     @include filter(blur(.04em));
     font-size: 2.75vw;
     line-height: 1.5;
-    text-shadow: -.15em 0 .1em #000, .05em 0 .05em #000;
+    text-shadow: -.15em 0 .1em #000, .05em 0 .05em #000, 0 .04em 0 #000;
   }
 
   a { color: inherit }
