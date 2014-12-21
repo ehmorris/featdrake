@@ -1,30 +1,48 @@
-toggle_play = (widget) ->
-  widget.toggle()
-  set_current_song_title(widget)
-  $('.controls').toggleClass('playing')
+class Playlist
+  constructor: (@widget, @songs) ->
+    @index = 0
+    @paused = true
 
-set_current_song_title = (widget) ->
-  widget.getCurrentSound (sound) ->
-    $('.current_song').text(sound.title)
-
-next_song = (widget) ->
-  playlist_length = 0
-
-  widget.getSounds (sounds) ->
-    playlist_length = sounds.length
-
-  widget.getCurrentSoundIndex (index) ->
-    if index + 1 < playlist_length
-      widget.next()
+  toggle_play: ->
+    if @paused
+      @widget.play()
+      this.on_play()
     else
-      widget.skip(0)
-    set_current_song_title(widget)
+      @widget.pause()
+      this.on_pause()
+
+  next: ->
+    if @index + 1 < @songs.length
+      @index++
+    else
+      @index = 0
+
+    @widget.skip(@index)
+    this.on_play()
+
+  set_title: ->
+    title = @songs[@index].title
+    $('.about h1').text("#{title} ")
+    $('.about span').text('now playing')
+
+  on_play: ->
+    @paused = false
+    this.set_title()
+    marquee.start()
+    $('.controls').addClass('playing')
+
+  on_pause: ->
+    @paused = true
+    marquee.pause()
+    $('.controls').removeClass('playing')
 
 $ ->
-  window.widget = SC.Widget($('.soundcloud').get(0))
+  widget = SC.Widget($('.soundcloud').get(0))
+  playlist = new Object
 
-  $('.controls .playpause').on 'click', ->
-    toggle_play(widget)
+  setup = (widget, songs) ->
+    playlist = new Playlist(widget, songs)
+    $('.controls .playpause').on 'click', -> playlist.toggle_play()
+    $('.controls .next').on 'click', -> playlist.next()
 
-  $('.controls .next').on 'click', ->
-    next_song(widget)
+  widget.getSounds (songs) -> setup(widget, songs)

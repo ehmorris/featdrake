@@ -35,24 +35,31 @@ body {
 }
 
 .controls {
+  @include filter(blur(.075em));
   font-size: 1.5vw;
   margin-top: 1em;
   @include user-select(none);
 
   &.playing {
-    .playpause:after { content: 'pause' }
+    .playpause .play { display: none }
+    .playpause .pause { display: block }
   }
 
+  .playpause .play { display: block }
+  .playpause .pause { display: none }
+
   .control {
-    background: rgba($main-type-color, .5);
-    color: #fff;
     cursor: pointer;
     display: inline-block;
     padding: 1em;
-  }
+    vertical-align: top;
 
-  .playpause:after { content: 'play' }
-  .next:after { content: 'next' }
+    svg {
+      fill: $main-type-color;
+      @include filter(drop-shadow(-.25em 0 0.1em #000));
+      height: 5vw;
+    }
+  }
 }
 
 .videos video {

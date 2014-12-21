@@ -1,13 +1,16 @@
 .about
-  %h1 Feat. Drake Records
+  %h1 Feat. Drake Records&nbsp;
   %p
-    2014 Releases on Soundcloud:
+    %span 2014 Releases on Soundcloud:
     %br
     = link_to 'soundcloud.com/featdrake/sets/2014-releases', 'https://soundcloud.com/featdrake/sets/2014-releases'
+
   .controls
-    .current_song
     .control.playpause
+      = partial 'assets/play.svg'
+      = partial 'assets/pause.svg'
     .control.next
+      = partial 'assets/next.svg'
 
 .videos
   %video.active{ 'src' => 'assets/driving.mp4', 'autoplay' => 'true', 'loop' => 'true' }
