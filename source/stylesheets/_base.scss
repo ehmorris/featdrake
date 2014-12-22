@@ -1,4 +1,6 @@
 body {
+  background: url('/assets/placeholder.jpg') 0 0;
+  background-size: cover;
   color: $main-type-color;
   font: 400 1em/1.4 $primary-font;
   margin: 0;
