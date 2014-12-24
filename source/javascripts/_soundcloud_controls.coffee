@@ -22,18 +22,21 @@ class Playlist
 
   set_title: ->
     title = @songs[@index].title
+    $('title').text("#{title} ")
     $('.about h1').text("#{title} ")
     $('.about span').text('now playing')
 
   on_play: ->
     @paused = false
     this.set_title()
-    marquee.start()
+    header_marquee.start()
+    title_marquee.start()
     $('.controls').addClass('playing')
 
   on_pause: ->
     @paused = true
-    marquee.pause()
+    header_marquee.pause()
+    title_marquee.pause()
     $('.controls').removeClass('playing')
 
 $ ->
@@ -47,4 +50,4 @@ $ ->
       $('.controls .next').on 'click', -> playlist.next()
 
     widget.getSounds (songs) -> setup(widget, songs)
-  , 1500
+  , 1200

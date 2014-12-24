@@ -15,6 +15,10 @@ move_letters_left = ($text_object) ->
   $text_object.text(text_array.join(''))
 
 $ ->
-  window.marquee = new MiniDaemon $('.about h1'), ->
+  window.header_marquee = new MiniDaemon $('.about h1'), ->
+    move_letters_left(this)
+  , .25 * 1000
+
+  window.title_marquee = new MiniDaemon $('title'), ->
     move_letters_left(this)
   , .25 * 1000
