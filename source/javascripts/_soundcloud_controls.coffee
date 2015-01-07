@@ -40,14 +40,11 @@ class Playlist
     $('.controls').removeClass('playing')
 
 $ ->
-  setTimeout ->
-    widget = SC.Widget($('.soundcloud').get(0))
-    playlist = new Object
-
+  widget = SC.Widget($('.soundcloud').get(0))
+  widget.bind SC.Widget.Events.READY, ->
     setup = (widget, songs) ->
       playlist = new Playlist(widget, songs)
       $('.controls .playpause').on 'click', -> playlist.toggle_play()
       $('.controls .next').on 'click', -> playlist.next()
 
     widget.getSounds (songs) -> setup(widget, songs)
-  , 1200
