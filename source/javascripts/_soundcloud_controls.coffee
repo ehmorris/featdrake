@@ -43,9 +43,10 @@ $ ->
   widget = SC.Widget($('.soundcloud').get(0))
   widget.bind SC.Widget.Events.READY, ->
     setup = (widget, songs) ->
+      $('.controls').removeClass('inactive')
       playlist = new Playlist(widget, songs)
       $('.control.playpause').on 'click', -> playlist.toggle_play()
       $('.control.next').on 'click', -> playlist.next()
-      return
+      widget.bind SC.Widget.Events.FINISH, -> playlist.next()
 
     widget.getSounds (songs) -> setup(widget, songs)

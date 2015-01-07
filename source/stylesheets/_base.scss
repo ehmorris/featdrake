@@ -43,6 +43,11 @@ body {
   margin-top: 1em;
   @include user-select(none);
 
+  &.inactive .control {
+    cursor: wait;
+    opacity: .5
+  }
+
   &.playing {
     .playpause .play { display: none }
     .playpause .pause { display: block }
