@@ -44,7 +44,8 @@ $ ->
   widget.bind SC.Widget.Events.READY, ->
     setup = (widget, songs) ->
       playlist = new Playlist(widget, songs)
-      $('.controls .playpause').on 'click', -> playlist.toggle_play()
-      $('.controls .next').on 'click', -> playlist.next()
+      $('.control.playpause').on 'click', -> playlist.toggle_play()
+      $('.control.next').on 'click', -> playlist.next()
+      return
 
     widget.getSounds (songs) -> setup(widget, songs)
