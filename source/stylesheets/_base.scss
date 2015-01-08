@@ -10,7 +10,6 @@ body {
 }
 
 .about {
-  font-family: monospace;
   letter-spacing: 1px;
   @include position(absolute, 12vh 0 auto 0);
   text-align: center;
@@ -34,7 +33,7 @@ body {
     text-shadow: -.15em 0 .1em #000, .05em 0 .05em #000, 0 .04em 0 #000;
   }
 
-  a { color: inherit }
+  a { color: $main-type-color }
 }
 
 .controls {
