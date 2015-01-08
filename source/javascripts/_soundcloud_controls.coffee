@@ -49,6 +49,8 @@ $ ->
     setup = (widget, songs) ->
       $('.controls').removeClass('inactive')
       playlist = new Playlist(widget, songs)
+      $(document).on 'keyup', (key) ->
+        playlist.toggle_play() if key.keyCode is 32
       $('.control.playpause').on 'click', -> playlist.toggle_play()
       $('.control.next').on 'click', -> playlist.next()
       widget.bind SC.Widget.Events.FINISH, -> playlist.next()
