@@ -40,7 +40,7 @@ body {
 .controls {
   @include filter(blur(.075em));
   font-size: 1.5vw;
-  margin-top: 1em;
+  margin-top: .5em;
   @include user-select(none);
 
   &.inactive .control {

@@ -24,11 +24,15 @@ class Playlist
     title = @songs[@index].title
     $('title').text("#{title} ")
     $('.about h1').text("#{title} ")
-    $('.about span').text('now playing')
+
+  set_artist: ->
+    @widget.getCurrentSound (sound) ->
+      $('.about span').text("BY #{sound.user.username}")
 
   on_play: ->
     @paused = false
     this.set_title()
+    this.set_artist()
     header_marquee.start()
     title_marquee.start()
     $('.controls').addClass('playing')

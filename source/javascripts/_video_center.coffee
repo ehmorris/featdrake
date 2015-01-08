@@ -4,12 +4,11 @@ center_videos = ->
 
   if $video.width() > $(window).width()
     offset = ($video.width() - $(window).width()) / 2
-    $videos.css('left', "-#{offset}px")
+    $videos.css({'left': "-#{offset}px", 'top': '0px'})
 
   else if $video.height() > $(window).height()
     offset = ($video.height() - $(window).height()) / 2
-    $videos.css('top', "-#{offset}px")
+    $videos.css({'top': "-#{offset}px", 'left': '0px'})
 
 $ ->
-  center_videos()
-  $(window).resize(center_videos)
+  setInterval(center_videos, 1000)
