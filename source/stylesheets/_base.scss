@@ -1,8 +1,9 @@
 body {
-  background: url('../assets/placeholder.jpg') 0 0;
-  background-size: cover;
+  background: url('../assets/placeholder.gif') center no-repeat;
+  background-size: 450%;
   color: $main-type-color;
   font: 400 1em/1.4 $primary-font;
+  height: 100vh;
   margin: 0;
   overflow: hidden;
   padding: 0;
@@ -16,6 +17,10 @@ body {
   text-transform: uppercase;
   z-index: 3;
 
+  @include if_narrower_than($font-size-breakpoint) {
+    top: 20vh;
+  }
+
   h1, p { margin: 0 }
 
   h1 {
@@ -24,6 +29,10 @@ body {
     line-height: 1.15;
     text-shadow: -.1em 0 .05em #000, .05em 0 .05em #000, 0 .04em 0 #000;
     white-space: pre;
+
+    @include if_narrower_than($font-size-breakpoint) {
+      font-size: 20vw;
+    }
   }
 
   p {
@@ -31,6 +40,13 @@ body {
     font-size: 2.75vw;
     line-height: 1.5;
     text-shadow: -.15em 0 .1em #000, .05em 0 .05em #000, 0 .04em 0 #000;
+
+    @include if_narrower_than($font-size-breakpoint) {
+      font-size: 6vw;
+      margin-top: .75em;
+      padding: .75em;
+      word-break: break-word;
+    }
   }
 
   a { color: $main-type-color }
@@ -41,6 +57,13 @@ body {
   font-size: 1.5vw;
   margin-top: .5em;
   @include user-select(none);
+
+  @include if_narrower_than($font-size-breakpoint) {
+    bottom: .5em;
+    font-size: 1.5rem;
+    position: fixed;
+    width: 100%;
+  }
 
   &.inactive .control {
     cursor: wait;
@@ -61,11 +84,26 @@ body {
     padding: 1em;
     vertical-align: top;
 
+    @include if_narrower_than($font-size-breakpoint) {
+      padding: .5em;
+      -webkit-tap-highlight-color: none;
+    }
+
     svg {
       fill: $main-type-color;
       @include filter(drop-shadow(-.25em 0 0.1em #000));
       height: 5vw;
+
+      @include if_narrower_than($font-size-breakpoint) {
+        height: 20vw;
+      }
     }
+  }
+}
+
+.videos {
+  @include if_narrower_than($font-size-breakpoint) {
+    display: none;
   }
 }
 
