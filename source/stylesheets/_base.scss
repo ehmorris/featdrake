@@ -18,7 +18,8 @@ body {
   z-index: 3;
 
   @include if_narrower_than($font-size-breakpoint) {
-    top: 20vh;
+    overflow: hidden;
+    width: 100%;
   }
 
   h1, p { margin: 0 }
@@ -43,7 +44,6 @@ body {
 
     @include if_narrower_than($font-size-breakpoint) {
       font-size: 6vw;
-      margin-top: .75em;
       padding: .75em;
       word-break: break-word;
     }
@@ -59,7 +59,7 @@ body {
   @include user-select(none);
 
   @include if_narrower_than($font-size-breakpoint) {
-    bottom: .5em;
+    bottom: 1.5em;
     font-size: 1.5rem;
     position: fixed;
     width: 100%;
